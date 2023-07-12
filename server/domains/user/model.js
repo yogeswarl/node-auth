@@ -7,6 +7,7 @@ const userSchema = new SCHEMA({
   email: {type:String, unique:true},
   password: String,
   role: String,
+  token: String,
 });
 
 // create a user model

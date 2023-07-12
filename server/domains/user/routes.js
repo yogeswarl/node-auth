@@ -1,9 +1,28 @@
 const express = require("express");
-const { createNewUser } = require("./controller");
+const { createNewUser,authenticateUser } = require("./controller");
 const router = express.Router();
 
+// @route GET api/users/login
+router.post('/login', async (req, res) => {
+	try {
+		let { email, password } = req.body;
+		email = email.trim();
+		password = password.trim();
+
+		if (!(email && password)) {
+			throw new Error("All input is required");
+		} else {
+			const authenticatedUser = await authenticateUser({email,password});
+			res.status(200).json({authenticatedUser});
+		}
+	}
+	catch (error) {
+		res.status(400).send(error.message);
+	}
+});
+
+// @route POST api/users/signup
 router.post("/signup", async (req, res) => {
-	res.setHeader('Content-Type', 'application/json');
 	try {
 		let { name, email, password, role } = req.body;
 		name = name.trim();

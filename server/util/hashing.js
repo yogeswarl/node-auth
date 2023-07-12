@@ -9,5 +9,13 @@ const hashData = async (data) => {
     throw new Error(error);
   }
 }
+const compareHashedData = async (data, hashedData) => {
+  try {
+    const isMatch = await bcrypt.compare(data, hashedData);
+    return isMatch;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
 
-module.exports = hashData;
+module.exports = {hashData, compareHashedData};
