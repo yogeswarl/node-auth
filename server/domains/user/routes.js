@@ -1,7 +1,12 @@
 const express = require("express");
 const { createNewUser,authenticateUser } = require("./controller");
 const router = express.Router();
+const auth = require('../../middleware/auth')
 
+
+router.get('/welcome',auth,async(req,res)=>{
+	res.status(200).json({message:`Welcome to the API ${req.user.email}}`})
+})
 // @route GET api/users/login
 router.post('/login', async (req, res) => {
 	try {
