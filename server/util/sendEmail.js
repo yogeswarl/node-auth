@@ -6,7 +6,8 @@ let transporter = nodemailer.createTransport({
   auth:{
     user: AUTH_EMAIL,
     pass: AUTH_PASS
-  }
+  },
+  send: true
 });
 
 transporter.verify((error,success) => {
