@@ -36,7 +36,7 @@ const sendOTP = async ({ email, subject, message, duration = 1 }) => {
 		await OTP.deleteOne({ email });
 		const generatedOTP = await generateOTP();
 		const mailOptions = {
-			FROM: "outlook_f35e0464dd7ceb54@outlook.com",
+			FROM: AUTH_EMAIL,
 			to: email,
 			subject,
 			html: `<html><p>${message}</p><p style="color: red;">${generatedOTP}</p><p>OTP expires in ${duration} minutes</p></html>`,
