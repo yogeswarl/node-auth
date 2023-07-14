@@ -1,5 +1,5 @@
 const User = require("../user/model");
-const { sendOTP } = require("../otp/controller");
+const { sendOTP,verifyOTP, deleteOTP} = require("../otp/controller");
 const sendEmailVerification = async (email) => {
 	try {
 		const existingUser = await User.findOne({ email });
@@ -19,5 +19,17 @@ const sendEmailVerification = async (email) => {
     throw new Error(error.message)
   }
 };
+const verifyEmail = async (email, otp) => {
+  try {
+    const validOTP = await verifyOTP({email,otp})
+    if (!validOTP){
+      throw new Error("Invalid OTP")
+    }
+    await deleteOTP({email})
 
-module.exports = { sendEmailVerification };
+
+  } catch (error) {
+    throw new Error(error.message)
+  }
+};
+module.exports = { sendEmailVerification,verifyEmail };
