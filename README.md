@@ -23,4 +23,7 @@ npm run dev
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
-## Features
+## Future work
+
+ - [] Add react front end for the project.
+ - [] write assertion and unit tests for the project.
