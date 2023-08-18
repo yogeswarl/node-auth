@@ -25,5 +25,5 @@ npm run dev
 
 ## Future work
 
- - [] Add react front end for the project.
- - [] write assertion and unit tests for the project.
+ - Add react front end for the project.
+ - write assertion and unit tests for the project.
